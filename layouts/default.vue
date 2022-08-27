@@ -23,8 +23,11 @@
       <!-- <v-btn icon @click.stop="fixed = !fixed">
         <v-icon>mdi-minus</v-icon>
       </v-btn> -->
-      <!-- <v-img src="https://raw.githubusercontent.com/Tense-Turtles/MedProdigy-project/main/assets/images/logo.jpeg" contain ></v-img> -->
+      <!-- <v-img src="../static/logo.jpeg" ></v-img> -->
+
+      <img src="../static/logo.jpeg" height="100%">
       <v-app-bar-title v-text="title" />
+
       <!-- <v-spacer /> -->
       <!-- <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
@@ -53,7 +56,7 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-home',
           title: 'Home',
           to: '/',
         },
@@ -69,7 +72,7 @@ export default {
           icon: 'mdi-list-box',
           title: 'Monitor Patients',
           to: '/monitorPatients',
-        },{
+        }, {
           icon: 'mdi-doctor',
           title: 'Register a doctor',
           to: '/regDoc',
