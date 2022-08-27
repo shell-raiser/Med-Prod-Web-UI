@@ -35,7 +35,24 @@ export default {
 	modules: [
 		// https://go.nuxtjs.dev/pwa
 		'@nuxtjs/pwa',
+		'@nuxtjs/firebase'
 	],
+
+	firebase: {
+		// options
+		config: {
+			apiKey: "AIzaSyB9ahJNsL4sfy4TVlc9jGymrkJPlbbJ0-w",
+			authDomain: "hospicare-app22.firebaseapp.com",
+			projectId: "hospicare-app22",
+			storageBucket: "hospicare-app22.appspot.com",
+			messagingSenderId: "485352211339",
+			appId: "1:485352211339:web:f3666f946f0d4fa38c658e",
+			measurementId: "G-F8NXZ03XGP"
+		},
+		services: {
+			auth: true
+		}
+	},
 
 	// PWA module configuration: https://go.nuxtjs.dev/pwa
 	pwa: {

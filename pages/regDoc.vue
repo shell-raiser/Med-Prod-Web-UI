@@ -13,16 +13,11 @@
             </v-row>
 
 
-            <v-text-field v-model="email" :rules="phoneRules" label="Doctor Phone Number" required></v-text-field>
-            <v-text-field v-model="email" :rules="emailRules" label="Doctor E-mail" required></v-text-field>
+            <v-text-field v-model="phoneNo" :rules="phoneRules" label="Doctor Phone Number" required></v-text-field>
+            <v-text-field v-model="email" id="email" :rules="emailRules" label="Doctor E-mail" required></v-text-field>
 
-            <!-- <v-textarea v-model="email" :rules="emailRules" label="Patient Address" required></v-textarea> -->
-            
 
-            <!-- <v-checkbox v-model="checkbox" :rules="[v => !!v || 'You must agree to continue!']" label="Do you agree?"
-            required></v-checkbox> -->
-
-            <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
+            <v-btn :disabled="!valid" color="success" class="mr-4" @click="validateAndSubmit">
                 Create Profile
             </v-btn>
 
@@ -39,6 +34,7 @@ export default {
         firstname: '',
         lastname: '',
         name: '',
+        phoneNo: '',
         nameRules: [
             v => !!v || 'Name is required',
             // v => (v && v.length <= 10) || 'Name must be less than 10 characters',
@@ -61,15 +57,24 @@ export default {
     }),
 
     methods: {
-        validate() {
+        async validateAndSubmit() {
             this.$refs.form.validate()
+            try {
+                await this.$fire.auth.createUserWithEmailAndPassword(
+                    document.getElementById("email").value,
+                    'testtest'
+                )
+            } catch (e) {
+                console.log(document.getElementById("email").value)
+                console.log(e)
+                // handleError(e)
+            }
         },
         reset() {
             this.$refs.form.reset()
         },
-        resetValidation() {
-            this.$refs.form.resetValidation()
-        },
+
+
     },
 }
 </script>
