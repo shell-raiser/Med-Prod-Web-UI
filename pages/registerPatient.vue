@@ -1,6 +1,6 @@
 <template>
-    <v-form ref="form" v-model="valid" lazy-validation>
-        <v-container>
+    <v-container>
+        <v-form ref="form" v-model="valid" lazy-validation>
             <v-row>
                 <v-col cols="12" md="4">
                     <v-text-field v-model="firstname" :rules="nameRules" label="First name" required>
@@ -52,8 +52,8 @@
             <v-btn color="error" class="mr-4" @click="reset">
                 Reset
             </v-btn>
-        </v-container>
-    </v-form>
+        </v-form>
+    </v-container>
 </template>
 
 <script>

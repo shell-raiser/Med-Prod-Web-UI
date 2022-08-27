@@ -54,7 +54,7 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Home',
           to: '/',
         },
         {
@@ -69,6 +69,10 @@ export default {
           icon: 'mdi-list-box',
           title: 'Monitor Patients',
           to: '/monitorPatients',
+        },{
+          icon: 'mdi-doctor',
+          title: 'Register a doctor',
+          to: '/regDoc',
         },
       ],
       miniVariant: false,
