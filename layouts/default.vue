@@ -23,8 +23,9 @@
       <!-- <v-btn icon @click.stop="fixed = !fixed">
         <v-icon>mdi-minus</v-icon>
       </v-btn> -->
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
+      <!-- <v-img src="https://raw.githubusercontent.com/Tense-Turtles/MedProdigy-project/main/assets/images/logo.jpeg" contain ></v-img> -->
+      <v-app-bar-title v-text="title" />
+      <!-- <v-spacer /> -->
       <!-- <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
       </v-btn> -->
@@ -44,6 +45,7 @@
 <script>
 export default {
   name: 'DefaultLayout',
+  // mode: 'out-in',
   data() {
     return {
       clipped: true,
@@ -77,3 +79,25 @@ export default {
   },
 }
 </script>
+<style>
+.page-enter,
+.page-leave-active {
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
+.page-enter-active {
+  transition: all 0.2s ease-out;
+  /* transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1); */
+}
+
+.page-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, -2);
+}
+
+.page-enter-from,
+.page-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+</style>

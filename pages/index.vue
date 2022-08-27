@@ -1,6 +1,8 @@
 <template>
 	<v-row justify="center" align="center">
 		<v-col cols="12" sm="8" md="6">
+			<!-- <v-img src="../static/logo.jpeg"></v-img> -->
+			<!-- <v-img lazy-src="https://picsum.photos/id/11/10/6" max-height="150" max-width="250" src="https://picsum.photos/id/11/500/300"></v-img> -->
 			<v-card class="logo py-4 d-flex justify-center">
 				<NuxtLogo />
 				<VuetifyLogo />
