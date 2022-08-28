@@ -41,6 +41,7 @@ export default {
 	firebase: {
 		// options
 		config: {
+			databaseURL: "https://hospicare-app22-default-rtdb.firebaseio.com/",
 			apiKey: "AIzaSyB9ahJNsL4sfy4TVlc9jGymrkJPlbbJ0-w",
 			authDomain: "hospicare-app22.firebaseapp.com",
 			projectId: "hospicare-app22",
@@ -50,7 +51,8 @@ export default {
 			measurementId: "G-F8NXZ03XGP"
 		},
 		services: {
-			auth: true
+			auth: true,
+			database: true
 		}
 	},
 

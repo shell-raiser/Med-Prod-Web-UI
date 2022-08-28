@@ -3,17 +3,18 @@
         <v-form ref="form" v-model="valid" lazy-validation>
             <v-row>
                 <v-col cols="12" md="6">
-                    <v-text-field v-model="name" :rules="nameRules" label="Name" required>
+                    <v-text-field id="name" v-model="name" :rules="nameRules" label="Name" required>
                     </v-text-field>
                 </v-col>
 
                 <v-col cols="12" md="6">
-                    <v-text-field :rules="patientRules" :counter="10" label="Doctor ID" required></v-text-field>
+                    <v-text-field id="id" :rules="patientRules" :counter="10" label="Doctor ID" required></v-text-field>
                 </v-col>
             </v-row>
 
 
-            <v-text-field v-model="phoneNo" :rules="phoneRules" label="Doctor Phone Number" required></v-text-field>
+            <v-text-field id="phone" v-model="phoneNo" :rules="phoneRules" label="Doctor Phone Number" required>
+            </v-text-field>
             <v-text-field v-model="email" id="email" :rules="emailRules" label="Doctor E-mail" required></v-text-field>
 
 
@@ -24,6 +25,9 @@
             <v-btn color="error" class="mr-4" @click="reset">
                 Reset
             </v-btn>
+            <!-- <v-btn color="error" class="mr-4" @click="createDummy">
+                create
+            </v-btn> -->
         </v-form>
     </v-container>
 </template>
@@ -64,6 +68,13 @@ export default {
                     document.getElementById("email").value,
                     'testtest'
                 )
+                await this.$fire.database.ref('anHospital/doctors/' + 12345678).set({
+                    // username: name,
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    phone: document.getElementById("phone").value,
+                    id: document.getElementById("id").value,
+                });
             } catch (e) {
                 console.log(document.getElementById("email").value)
                 console.log(e)
@@ -73,6 +84,23 @@ export default {
         reset() {
             this.$refs.form.reset()
         },
+        // async createDummy() {
+        //     try {
+        //         await this.$fire.database.ref('anHospital/doctors/' + 12345678).set({
+        //             // username: name,
+        //             name: document.getElementById("name").value,
+        //             email: document.getElementById("email").value,
+        //             phone: document.getElementById("phone").value,
+        //             id: document.getElementById("id").value,
+        //         });
+
+        //     } catch (e) {
+        //         // console.log(document.getElementById("email").value)
+        //         console.log(e)
+        //         // handleError(e)
+        //     }
+
+        // }
 
 
     },

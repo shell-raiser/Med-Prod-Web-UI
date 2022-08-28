@@ -52,6 +52,8 @@
             <v-btn color="error" class="mr-4" @click="reset">
                 Reset
             </v-btn>
+
+
         </v-form>
     </v-container>
 </template>
@@ -104,6 +106,7 @@ export default {
         resetValidation() {
             this.$refs.form.resetValidation()
         },
+
     },
 }
 </script>
