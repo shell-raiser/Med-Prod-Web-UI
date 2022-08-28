@@ -6,7 +6,7 @@ export default {
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
 		titleTemplate: '%s - medProd',
-		title: 'medProd',
+		title: 'medProd Web',
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -51,9 +51,23 @@ export default {
 			measurementId: "G-F8NXZ03XGP"
 		},
 		services: {
-			auth: true,
+			auth: {
+				persistence: 'local', // default
+				initialize: {
+					// onAuthStateChangedAction: 'onAuthStateChangedAction',
+					onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
+					// subscribeManually: false
+				},
+				ssr: false, // default
+				// emulatorPort: 9099,
+				// emulatorHost: 'http://localhost',
+			},
 			database: true
 		}
+	},
+
+	router: {
+		middleware: 'router-auth'
 	},
 
 	// PWA module configuration: https://go.nuxtjs.dev/pwa
