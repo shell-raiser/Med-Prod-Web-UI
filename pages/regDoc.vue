@@ -66,8 +66,11 @@ export default {
             try {
                 await this.$fire.auth.createUserWithEmailAndPassword(
                     document.getElementById("email").value,
-                    'testtest'
-                )
+                    'testtesttest'
+                );
+                await this.$fire.auth.currentUser.updateProfile({ displayName: document.getElementById("name").value }).catch(
+                    (err) => console.log(err)
+                );
                 await this.$fire.database.ref('anHospital/doctors/' + 12345678).set({
                     // username: name,
                     name: document.getElementById("name").value,

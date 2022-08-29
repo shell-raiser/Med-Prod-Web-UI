@@ -72,6 +72,10 @@ export default {
 					icon: 'mdi-doctor',
 					title: 'Register a doctor',
 					to: '/regDoc',
+				},{
+					icon: 'mdi-login',
+					title: 'Sign in',
+					to: '/sign',
 				},
 			],
 			miniVariant: false,

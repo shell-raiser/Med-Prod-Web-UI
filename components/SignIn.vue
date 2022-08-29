@@ -31,6 +31,7 @@ export default {
             // privacyPolicyUrl: '/privacy',
             callbacks: {
                 signInSuccessWithAuthResult() {
+                    console.log()
                     console.log('signInSuccessWithAuthResult')
                 },
                 uiShown: function () {
