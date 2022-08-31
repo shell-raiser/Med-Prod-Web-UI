@@ -32,6 +32,19 @@
     </v-container>
 </template>
 <script>
+// const firebase = require('firebase')
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+
+// const firebase = initializeApp(firebaseConfig);
+var config = {
+    apiKey: "AIzaSyB9ahJNsL4sfy4TVlc9jGymrkJPlbbJ0-w",
+    authDomain: "hospicare-app22.firebaseapp.com",
+    databaseURL: "https://hospicare-app22-default-rtdb.firebaseio.com"
+};
+var secondaryApp = initializeApp(config, "Secondary");
+var auth2 = getAuth(secondaryApp);
+
 export default {
     data: () => ({
         valid: true,
@@ -64,21 +77,25 @@ export default {
         async validateAndSubmit() {
             this.$refs.form.validate()
             try {
-                await this.$fire.auth.createUserWithEmailAndPassword(
-                    document.getElementById("email").value,
-                    'testtesttest'
-                ).then(async data => {
-                    await this.$fire.auth.currentUser.updateProfile({ displayName: document.getElementById("name").value });
-                    await this.$fire.database.ref('anHospital/doctors/' + data.user.uid).set({
-                        // username: name,
-                        name: document.getElementById("name").value,
-                        email: document.getElementById("email").value,
-                        phone: document.getElementById("phone").value,
-                        id: document.getElementById("id").value,
-                    })
-                }).catch(error => {
-                    console.log(error);
-                });
+                // await this.$fire.auth.createUserWithEmailAndPassword(
+                await createUserWithEmailAndPassword(auth2, document.getElementById("email").value,
+                    'testtesttest').then(function (firebaseUser) {
+                        console.log("User " + firebaseUser + " created successfully!");
+                    }
+                    ).then(async data => {
+                        await updateProfile(auth2.currentUser, { displayName: document.getElementById("name").value });
+                        await this.$fire.database.ref('anHospital/doctors/' + auth2.currentUser.uid).set({
+                            // username: name,
+                            name: document.getElementById("name").value,
+                            email: document.getElementById("email").value,
+                            phone: document.getElementById("phone").value,
+                            id: document.getElementById("id").value,
+                        });
+                        //I don't know if the next statement is necessary
+                        auth2.signOut();
+                    }).catch(error => {
+                        console.log(error);
+                    });
             } catch (e) {
                 // console.log(document.getElementById("email").value)
                 console.log(e)
