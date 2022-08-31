@@ -93,7 +93,9 @@ export default {
                         });
                         //I don't know if the next statement is necessary
                         auth2.signOut();
-                    }).catch(error => {
+                    })
+                    // .then(async data => { await auth2.setCustomUserClaims(auth2.currentUser.uid, { doctor: true }) })
+                    .catch(error => {
                         console.log(error);
                     });
             } catch (e) {

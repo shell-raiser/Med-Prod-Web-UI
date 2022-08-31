@@ -8,7 +8,8 @@ export const mutations = {
             state.user = {
                 uid: authUser.uid,
                 // email: authUser.email,
-                displayName: authUser.displayName
+                displayName: authUser.displayName,
+                // idDoc: claims.doctor
             }
         }
         else {
