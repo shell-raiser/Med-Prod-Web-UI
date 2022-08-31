@@ -67,19 +67,20 @@ export default {
                 await this.$fire.auth.createUserWithEmailAndPassword(
                     document.getElementById("email").value,
                     'testtesttest'
-                );
-                await this.$fire.auth.currentUser.updateProfile({ displayName: document.getElementById("name").value }).catch(
-                    (err) => console.log(err)
-                );
-                await this.$fire.database.ref('anHospital/doctors/' + 12345678).set({
-                    // username: name,
-                    name: document.getElementById("name").value,
-                    email: document.getElementById("email").value,
-                    phone: document.getElementById("phone").value,
-                    id: document.getElementById("id").value,
+                ).then(async data => {
+                    await this.$fire.auth.currentUser.updateProfile({ displayName: document.getElementById("name").value });
+                    await this.$fire.database.ref('anHospital/doctors/' + data.user.uid).set({
+                        // username: name,
+                        name: document.getElementById("name").value,
+                        email: document.getElementById("email").value,
+                        phone: document.getElementById("phone").value,
+                        id: document.getElementById("id").value,
+                    })
+                }).catch(error => {
+                    console.log(error);
                 });
             } catch (e) {
-                console.log(document.getElementById("email").value)
+                // console.log(document.getElementById("email").value)
                 console.log(e)
                 // handleError(e)
             }
