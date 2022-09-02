@@ -22,24 +22,23 @@
             <v-text-field v-model="email" :rules="emailRules" label="Patient E-mail" required></v-text-field>
             <v-row>
                 <v-col cols="12" md="4">
-                    <v-text-field v-model="firstname" :rules="phoneRules" :counter="10" label="Emergency Contact 1"
-                        required>
+                    <v-text-field v-model="firstname" :rules="emailRules" label="Emergency Contact 1" required>
                     </v-text-field>
                 </v-col>
 
                 <v-col cols="12" md="4">
-                    <v-text-field v-model="lastname" :rules="phoneRules" :counter="10" label="Emergency Contact 2"
-                        required>
+                    <v-text-field v-model="lastname" :rules="emailRules" label="Emergency Contact 2" required>
                     </v-text-field>
                 </v-col>
 
                 <v-col cols="12" md="4">
-                    <v-text-field :rules="phoneRules" :counter="10" label="Emergency Contact 3" required>
+                    <v-text-field :rules="emailRules" label="Emergency Contact 3" required>
                     </v-text-field>
                 </v-col>
             </v-row>
             <!-- <v-textarea v-model="email" :rules="emailRules" label="Patient Address" required></v-textarea> -->
-            <v-select v-model="select" :items="items" :rules="[v => !!v || 'Item is required']" label="Item" required>
+            <v-select v-model="select" :items="doctors" :rules="[v => !!v || 'Item is required']" label="Doctors"
+                required>
             </v-select>
 
             <!-- <v-checkbox v-model="checkbox" :rules="[v => !!v || 'You must agree to continue!']" label="Do you agree?"
@@ -87,11 +86,11 @@ export default {
             v => (v && v.length == 10) || 'Phone No. must be equal to 10 characters',
         ],
         select: null,
-        items: [
-            'Item 1',
-            'Item 2',
-            'Item 3',
-            'Item 4',
+        doctors: [
+            'Doctor 1',
+            'Doctor 2',
+            'Doctor 3',
+            'Doctor 4',
         ],
         checkbox: false,
     }),
