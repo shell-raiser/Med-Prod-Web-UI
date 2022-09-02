@@ -57,22 +57,21 @@ export default {
 					to: '/',
 				},
 				{
-					icon: 'mdi-chart-bubble',
-					title: 'Inspire',
-					to: '/inspire',
-				}, {
 					icon: 'mdi-account-plus',
 					title: 'Register Patient',
 					to: '/registerPatient',
-				}, {
+				},
+				{
 					icon: 'mdi-list-box',
 					title: 'Monitor Patients',
 					to: '/monitorPatients',
-				}, {
+				},
+				{
 					icon: 'mdi-doctor',
 					title: 'Register a doctor',
 					to: '/regDoc',
-				},{
+				},
+				{
 					icon: 'mdi-login',
 					title: 'Sign in',
 					to: '/sign',
