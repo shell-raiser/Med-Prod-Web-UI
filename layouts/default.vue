@@ -1,6 +1,6 @@
 <template>
-	<v-app>
-		<v-navigation-drawer mini-variant clipped app expand-on-hover permanent>
+	<v-app dark>
+		<v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" clipped fixed app>
 			<v-list>
 				<v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
 					<v-list-item-action>
@@ -14,31 +14,44 @@
 		</v-navigation-drawer>
 		<v-app-bar clipped-left fixed app>
 			<!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
-			<!-- <v-btn icon @click.stop="miniVariant = !miniVariant">
+			<v-btn icon @click.stop="miniVariant = !miniVariant">
 				<v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-			</v-btn> -->
-			<!-- <v-btn icon @click.stop="clipped = !clipped">
+			</v-btn>
+			<!-- <v-btn
+        icon
+        @click.stop="clipped = !clipped"
+      >
         <v-icon>mdi-application</v-icon>
       </v-btn> -->
-			<!-- <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
+			<!-- <v-btn
+        icon
+        @click.stop="fixed = !fixed"
+      > -->
+			<!-- <v-icon>mdi-minus</v-icon>
       </v-btn> -->
-			<!-- <v-img src="../static/logo.jpeg" ></v-img> -->
-
-			<!-- <v-spacer /> -->
-			<img src="../static/logo.jpeg" height="100%">
-			<v-app-bar-title v-text="title" />
-
-			<!-- <v-btn icon @click.stop="rightDrawer = !rightDrawer">
+	  <img src="../static/logo.jpeg" height="100%">
+			<!-- <v-app-bar-title v-text="title" /> -->
+			<v-toolbar-title v-text="title" />
+			<v-spacer />
+			<!-- <v-btn
+        icon
+        @click.stop="rightDrawer = !rightDrawer"
+      >
         <v-icon>mdi-menu</v-icon>
       </v-btn> -->
 		</v-app-bar>
-
 		<v-main>
 			<v-container>
 				<Nuxt />
 			</v-container>
 		</v-main>
+		
+		<!-- <v-footer
+      :absolute="!fixed"
+      app
+    >
+      <span>&copy; {{ new Date().getFullYear() }}</span>
+    </v-footer> -->
 	</v-app>
 </template>
 
@@ -49,8 +62,8 @@ export default {
 	data() {
 		return {
 			// clipped: true,
-			// drawer: false,
-			// fixed: false,
+			drawer: false,
+			fixed: false,
 			items: [
 				{
 					icon: 'mdi-home',
@@ -78,7 +91,7 @@ export default {
 					to: '/sign',
 				},
 			],
-			// miniVariant: false,
+			miniVariant: false,
 			// right: true,
 			// rightDrawer: false,
 			title: 'Med Prod Web',
