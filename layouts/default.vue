@@ -1,6 +1,6 @@
 <template>
 	<v-app>
-		<v-navigation-drawer :mini-variant="miniVariant" :clipped=true fixed app>
+		<v-navigation-drawer mini-variant clipped app expand-on-hover permanent>
 			<v-list>
 				<v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
 					<v-list-item-action>
@@ -12,11 +12,11 @@
 				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
-		<v-app-bar :clipped-left=true fixed app>
+		<v-app-bar clipped-left fixed app>
 			<!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
-			<v-btn icon @click.stop="miniVariant = !miniVariant">
+			<!-- <v-btn icon @click.stop="miniVariant = !miniVariant">
 				<v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-			</v-btn>
+			</v-btn> -->
 			<!-- <v-btn icon @click.stop="clipped = !clipped">
         <v-icon>mdi-application</v-icon>
       </v-btn> -->
@@ -33,6 +33,7 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn> -->
 		</v-app-bar>
+
 		<v-main>
 			<v-container>
 				<Nuxt />
@@ -77,7 +78,7 @@ export default {
 					to: '/sign',
 				},
 			],
-			miniVariant: false,
+			// miniVariant: false,
 			// right: true,
 			// rightDrawer: false,
 			title: 'Med Prod Web',

@@ -1,9 +1,10 @@
 import colors from 'vuetify/es5/util/colors'
-
+// import { createVuetify } from 'vuetify'
 export default {
 	// css: ['~/assets/main.css'],
 	// pageTransition: 'page',
 	// Global page headers: https://go.nuxtjs.dev/config-head
+	target: 'server',
 	head: {
 		titleTemplate: '%s - medProd',
 		title: 'medProd Web',
@@ -66,10 +67,10 @@ export default {
 		}
 	},
 
-	router: {
-		middleware: 'router-auth'
-	},
-
+	// router: {
+	// 	middleware: 'router-auth'
+	// },
+	
 	// PWA module configuration: https://go.nuxtjs.dev/pwa
 	pwa: {
 		manifest: {
