@@ -29,7 +29,7 @@
       > -->
 			<!-- <v-icon>mdi-minus</v-icon>
       </v-btn> -->
-	  <img src="../static/logo.jpeg" height="100%">
+			<img src="../static/logo.jpeg" height="100%">
 			<!-- <v-app-bar-title v-text="title" /> -->
 			<v-toolbar-title v-text="title" />
 			<v-spacer />
@@ -45,7 +45,7 @@
 				<Nuxt />
 			</v-container>
 		</v-main>
-		
+
 		<!-- <v-footer
       :absolute="!fixed"
       app
