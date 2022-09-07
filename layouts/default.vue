@@ -31,7 +31,6 @@
       </v-btn> -->
 			<img src="../static/logo.jpeg" height="100%">
 			<!-- <v-app-bar-title v-text="title" /> -->
-			<v-toolbar-title v-text="title" />
 			<v-spacer />
 			<!-- <v-btn
         icon
