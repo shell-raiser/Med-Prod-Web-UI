@@ -84,8 +84,7 @@ export default {
                     }
                     ).then(async data => {
                         await updateProfile(auth2.currentUser, { displayName: document.getElementById("name").value });
-                        await this.$fire.database.ref('anHospital/doctors/' + auth2.currentUser.uid).set({
-                            // username: name,
+                        await this.$fire.database.ref(this.$fire.auth.currentUser.displayName + '/doctors/' + auth2.currentUser.displayName).set({
                             name: document.getElementById("name").value,
                             email: document.getElementById("email").value,
                             phone: document.getElementById("phone").value,
