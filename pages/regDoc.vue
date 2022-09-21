@@ -1,35 +1,61 @@
 <template>
-    <v-container>
-        <v-form ref="form" v-model="valid" lazy-validation>
-            <v-row>
-                <v-col cols="12" md="6">
-                    <v-text-field id="name" v-model="name" :rules="nameRules" label="Name" required>
-                    </v-text-field>
-                </v-col>
+  <v-container>
+    <sign-in v-if="!currentUser" />
+    <v-form ref="form" v-if="currentUser" v-model="valid" lazy-validation>
+      <v-row>
+        <v-col cols="12" md="6">
+          <v-text-field
+            id="name"
+            v-model="name"
+            :rules="nameRules"
+            label="Name"
+            required
+          >
+          </v-text-field>
+        </v-col>
 
-                <v-col cols="12" md="6">
-                    <v-text-field id="id" :rules="patientRules" :counter="10" label="Doctor ID" required></v-text-field>
-                </v-col>
-            </v-row>
+        <v-col cols="12" md="6">
+          <v-text-field
+            id="id"
+            :rules="patientRules"
+            :counter="10"
+            label="Doctor ID"
+            required
+          ></v-text-field>
+        </v-col>
+      </v-row>
 
+      <v-text-field
+        id="phone"
+        v-model="phoneNo"
+        :rules="phoneRules"
+        label="Doctor Phone Number"
+        required
+      >
+      </v-text-field>
+      <v-text-field
+        v-model="email"
+        id="email"
+        :rules="emailRules"
+        label="Doctor E-mail"
+        required
+      ></v-text-field>
 
-            <v-text-field id="phone" v-model="phoneNo" :rules="phoneRules" label="Doctor Phone Number" required>
-            </v-text-field>
-            <v-text-field v-model="email" id="email" :rules="emailRules" label="Doctor E-mail" required></v-text-field>
+      <v-btn
+        :disabled="!valid"
+        color="success"
+        class="mr-4"
+        @click="validateAndSubmit"
+      >
+        Create Profile
+      </v-btn>
 
-
-            <v-btn :disabled="!valid" color="success" class="mr-4" @click="validateAndSubmit">
-                Create Profile
-            </v-btn>
-
-            <v-btn color="error" class="mr-4" @click="reset">
-                Reset
-            </v-btn>
-            <!-- <v-btn color="error" class="mr-4" @click="createDummy">
+      <v-btn color="error" class="mr-4" @click="reset"> Reset </v-btn>
+      <!-- <v-btn color="error" class="mr-4" @click="createDummy">
                 create
             </v-btn> -->
-        </v-form>
-    </v-container>
+    </v-form>
+  </v-container>
 </template>
 <script>
 // const firebase = require('firebase')
@@ -47,6 +73,7 @@ var auth2 = getAuth(secondaryApp);
 
 export default {
     data: () => ({
+        
         valid: true,
         firstname: '',
         lastname: '',
@@ -126,5 +153,10 @@ export default {
 
 
     },
+    computed: {
+    currentUser() {
+      return this.$store.state.user
+    },
+  },
 }
 </script>

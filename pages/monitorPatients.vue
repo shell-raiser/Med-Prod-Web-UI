@@ -1,14 +1,16 @@
 <template>
   <v-container>
-    <h1>All Patients</h1>
+    <sign-in v-if="!currentUser" />
+    <h1 v-if="currentUser">All Patients</h1>
     <!-- <p>{{ allPatients }}</p> -->
 
     <v-container
+      v-if="currentUser"
       v-for="(patient, index) in this.allPatients"
       :key="index"
       style="padding: 10px"
     >
-      <v-card style="padding: 20px" :to='patientUrl(index)'>
+      <v-card style="padding: 20px" :to="patientUrl(index)">
         <v-row class="justify-space-around">
           <span>{{ index }}</span>
           <span>{{ patient[0][0] }}</span>
@@ -60,6 +62,11 @@ export default {
   methods: {
     patientUrl(index) {
       return '/patient/' + index
+    },
+  },
+  computed: {
+    currentUser() {
+      return this.$store.state.user
     },
   },
 }
