@@ -3,8 +3,8 @@
     <h1>All Patients</h1>
     <!-- <p>{{ allPatients }}</p> -->
     <v-container
-      v-for="(patient, index) in allPatients"
-      :key="patient"
+      v-for="(patient, index) in this.allPatients"
+      :key="index"
       style="padding: 10px"
     >
       <v-card style="padding: 20px">
@@ -17,7 +17,7 @@
         </v-row>
       </v-card>
     </v-container>
-    
+
     <!-- <personCard /> -->
   </v-container>
 </template>
@@ -40,6 +40,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.$route.params)
     try {
       const db = getDatabase()
       const starCountRef = ref(
