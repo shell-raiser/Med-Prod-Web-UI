@@ -86,7 +86,7 @@ export default {
 	// router: {
 	// 	middleware: 'router-auth'
 	// },
-	
+
 	// PWA module configuration: https://go.nuxtjs.dev/pwa
 	pwa: {
 		manifest: {
@@ -95,7 +95,7 @@ export default {
 	},
 
 	// Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
-	
+
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {},
