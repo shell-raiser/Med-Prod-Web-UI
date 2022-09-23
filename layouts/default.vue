@@ -32,6 +32,10 @@
 			<img src="../static/logo.jpeg" height="100%">
 			<!-- <v-app-bar-title v-text="title" /> -->
 			<v-spacer />
+			<v-btn depressed to="/sign" >
+				<div v-if="!currentUser">Login</div> 
+				<div v-if="currentUser">{{currentUser.displayName}}</div> 
+			</v-btn>
 			<!-- <v-btn
         icon
         @click.stop="rightDrawer = !rightDrawer"
@@ -84,11 +88,11 @@ export default {
 					title: 'Register a doctor',
 					to: '/regDoc',
 				},
-				{
-					icon: 'mdi-login',
-					title: 'Sign in',
-					to: '/sign',
-				},
+				// {
+				// 	icon: 'mdi-login',
+				// 	title: 'Sign in',
+				// 	to: '/sign',
+				// },
 			],
 			miniVariant: false,
 			// right: true,
@@ -96,6 +100,11 @@ export default {
 			title: 'Med Prod Web',
 		}
 	},
+	computed: {
+    currentUser() {
+      return this.$store.state.user
+    },
+  },
 	
 }
 </script>
