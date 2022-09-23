@@ -85,6 +85,9 @@
       </v-row>
       <!-- <v-textarea v-model="email" :rules="emailRules" label="Patient Address" required></v-textarea> -->
       <v-select
+        id="doctors"
+        chips
+        multiple
         v-model="select"
         :items="doctors"
         :rules="[(v) => !!v || 'Item is required']"
@@ -132,6 +135,7 @@ var secondaryApp = initializeApp(config, 'Secondary')
 var auth2 = getAuth(secondaryApp)
 
 export default {
+
   data: () => ({
     snackbar: false,
     snackString: '',
@@ -202,11 +206,11 @@ export default {
                 phone: document.getElementById('phone').value,
                 email: document.getElementById('email').value,
                 emergencyContacts: [
-                  document.getElementById('email').value,
                   document.getElementById('emer1').value,
                   document.getElementById('emer2').value,
+                  document.getElementById('emer2').value,
                 ],
-                doctorAssigned: document.getElementById('emer3').value,
+                doctorAssigned: this.select,
               })
             //I don't know if the next statement is necessary
             auth2.signOut()
@@ -233,6 +237,7 @@ export default {
       }
     },
     reset() {
+      // console.log()
       this.$refs.form.reset()
     },
 
