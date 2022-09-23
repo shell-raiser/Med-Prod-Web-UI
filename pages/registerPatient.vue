@@ -105,6 +105,14 @@
 
       <v-btn color="error" class="mr-4" @click="reset">Reset</v-btn>
     </v-form>
+    <v-snackbar v-model="snackbar" timeout="30000" multi-line>
+      {{ snackString }}
+      <template v-slot:action="{ attrs }">
+        <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -125,6 +133,8 @@ var auth2 = getAuth(secondaryApp)
 
 export default {
   data: () => ({
+    snackbar: false,
+    snackString: '',
     valid: true,
     firstname: '',
     lastname: '',
@@ -201,21 +211,34 @@ export default {
             //I don't know if the next statement is necessary
             auth2.signOut()
           })
+          .then(() => {
+            var msg =
+              'User ID: ' +
+              document.getElementById('email').value +
+              '\n Password: ' +
+              'testtesttest'
+            this.notifyUser(msg)
+            this.reset()
+          })
           // .then(async data => { await auth2.setCustomUserClaims(auth2.currentUser.uid, { doctor: true }) })
           .catch((error) => {
             console.log(error)
+            this.notifyUser(error)
           })
       } catch (e) {
         // console.log(document.getElementById("email").value)
         console.log(e)
+        this.notifyUser(error)
         // handleError(e)
       }
     },
     reset() {
       this.$refs.form.reset()
     },
-    resetValidation() {
-      this.$refs.form.resetValidation()
+
+    notifyUser(msg) {
+      this.snackbar = true
+      this.snackString = msg
     },
   },
   computed: {

@@ -166,6 +166,7 @@ export default {
       } catch (e) {
         // console.log(document.getElementById("email").value)
         console.log(e)
+		this.notifyUser(error)
         // handleError(e)
       }
     },
