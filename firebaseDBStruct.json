@@ -1,56 +1,97 @@
 {
-    "1stHospital": {
-      "doctors": [
-        "someUID"
-      ],
-      "logs": {
-        "someUID": [
-          [
-            "BP",
-            "TEMP",
-            "ECG",
-            "SPO2",
-            "Time-stamp"
-          ]
-        ]
-      },
-      "patients": [
-        "someUID"
-      ]
-    },
-    "2ndHospital": {
-      "doctors": [
-        "someUID"
-      ],
-      "logs": {
-        "someUID": [
-          [
-            "BP",
-            "TEMP",
-            "ECG",
-            "SPO2",
-            "Time-stamp"
-          ]
-        ]
-      },
-      "patients": [
-        "someUID"
-      ]
-    },
-    "anHospital": {
-      "doctors": {
-        "12345678": {
-          "email": "sanjay2020202020@gmail.com",
-          "id": "9696969696",
-          "name": "sanjay",
-          "phone": "9393939393"
-        },
-        "AWwiEANt8XgAwSMB2SDsUseUqwr1": {
-          "email": "thanmaiSanjay2@gmail.com",
-          "id": "9339393993",
-          "name": "thanmai",
-          "phone": "3939893939"
-        }
-      }
-    }
-  }
+	"init": {
+		"1stHospital": {
+			"doctors": [
+				"someUID"
+			],
+			"logs": {
+				"someUID": [
+					[
+						"BP",
+						"TEMP",
+						"ECG",
+						"SPO2",
+						"Time-stamp"
+					]
+				]
+			},
+			"patients": [
+				"someUID"
+			]
+		},
+		"2ndHospital": {
+			"doctors": [
+				"someUID"
+			],
+			"logs": {
+				"someUID": [
+					[
+						"BP",
+						"TEMP",
+						"ECG",
+						"SPO2",
+						"Time-stamp"
+					]
+				]
+			},
+			"patients": [
+				"someUID"
+			]
+		},
+		"anHospital": {
+			"doctors": {
+				"12345678": {
+					"email": "sanjay2020202020@gmail.com",
+					"id": "9696969696",
+					"name": "sanjay",
+					"phone": "9393939393"
+				},
+				"AWwiEANt8XgAwSMB2SDsUseUqwr1": {
+					"email": "thanmaiSanjay2@gmail.com",
+					"id": "9339393993",
+					"name": "thanmai",
+					"phone": "3939893939"
+				}
+			}
+		}
+	},
+	"revamp": {
+		"Users": {
+			"UID": {
+				"role": "patient or doctor or emergency or hospital",
+				"hospital": "UID",
+				"assignedDoctor": [
+					"UID",
+					"UID"
+				],
+				"logs": [
+					[],
+					[],
+					[]
+				]
+			}
+		},
+		"Hospitals": {
+			"UID": {
+				"doctors": [
+					"UID",
+					"UID"
+				],
+				"patients": [
+					"UID",
+					"UID"
+				]
+			},
+			"UID": {
+				"doctors": [
+					"UID",
+					"UID"
+				],
+				"patients": [
+					"UID",
+					"UID"
+				]
+			}
+		}
+	}
+}
