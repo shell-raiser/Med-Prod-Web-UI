@@ -1,27 +1,23 @@
 <template>
-  <v-container>
-    <sign-in v-if="!currentUser" />
-    <h1 v-if="currentUser">All Patients</h1>
-    <!-- <p>{{ allPatients }}</p> -->
+  <v-container
+    >
+    <!-- {{ this.allLogs }} -->
 
     <v-container
-      v-if="currentUser"
-      v-for="(patient, index) in this.allPatients"
+      v-for="index in this.allLogs"
       :key="index"
-      style="padding: 10px"
+      style="padding: 20px"
     >
-      <v-card style="padding: 20px" :to="patientUrl(index)">
+      <v-card>
         <v-row class="justify-space-around">
-          <span>{{ index }}</span>
-          <span>{{ patient[0][0] }}</span>
-          <span>{{ patient[0][1] }}</span>
-          <span>{{ patient[0][2] }}</span>
-          <span>{{ patient[0][3] }}</span>
+          <span>{{ index[0] }}</span>
+          <span>{{ index[1] }}</span>
+          <span>{{ index[2] }}</span>
+          <span>{{ index[3] }}</span>
+          <span>{{ index[4] }}</span>
         </v-row>
       </v-card>
     </v-container>
-
-    <!-- <personCard /> -->
   </v-container>
 </template>
 <script>
@@ -39,35 +35,28 @@ var secondaryApp = initializeApp(config, 'Secondary')
 export default {
   data() {
     return {
-      allPatients: {},
+      allLogs: [],
     }
   },
   mounted() {
     console.log(this.$route.params)
+    // console.log(this.$route.params)
     try {
       const db = getDatabase()
       const starCountRef = ref(
         db,
-        this.$fire.auth.currentUser.displayName + '/logs'
+        this.$fire.auth.currentUser.displayName +
+          '/logs/' +
+          this.$route.params.name
       )
       onValue(starCountRef, (snapshot) => {
         const data = snapshot.val()
-        this.allPatients = data
-        console.log(allPatients)
+        this.allLogs = data
+        console.log(data)
       })
     } catch (e) {
       console.log(e)
     }
-  },
-  methods: {
-    patientUrl(index) {
-      return '/patient/' + index
-    },
-  },
-  computed: {
-    currentUser() {
-      return this.$store.state.user
-    },
   },
 }
 </script>

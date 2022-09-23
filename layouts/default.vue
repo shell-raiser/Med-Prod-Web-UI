@@ -96,6 +96,7 @@ export default {
 			title: 'Med Prod Web',
 		}
 	},
+	
 }
 </script>
 <style>

@@ -1,6 +1,6 @@
 <template>
     <div class="text-center">
-        <h1>Welcome <span v-if="currentUser">{{ currentUser.displayName }}</span></h1>
+        <h1 v-if="currentUser">Logged in as <span >{{ currentUser.displayName }}</span></h1>
         <sign-in v-if="!currentUser" />
         <!-- <div>{{ currentUser }}</div> -->
         <div v-if="currentUser">

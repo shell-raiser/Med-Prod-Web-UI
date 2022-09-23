@@ -16,7 +16,7 @@
 
 
 
-            <v-text-field id="phone" v-model="phoneNo" :rules="phoneRules" label="Address" required>
+            <v-text-field id="addr" v-model="addr" :rules="addrRules" label="Hospital Address" required>
             </v-text-field>
 
             <v-text-field v-model="email" id="email" :rules="emailRules" label="Hospital E-mail" required>
@@ -24,7 +24,7 @@
 
 
             <v-btn :disabled="!valid" color="success" class="mr-4" @click="validateAndSubmit">
-                Create Profile
+                Create Account
             </v-btn>
 
             <v-btn color="error" class="mr-4" @click="reset">
@@ -55,8 +55,12 @@ export default {
         lastname: '',
         name: '',
         phoneNo: '',
+        addr: '',
         nameRules: [
             v => !!v || 'Name is required',
+            // v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+        ],addrRules: [
+            v => !!v || 'Address is required',
             // v => (v && v.length <= 10) || 'Name must be less than 10 characters',
         ],
         email: '',
@@ -82,16 +86,16 @@ export default {
             try {
                 // await this.$fire.auth.createUserWithEmailAndPassword(
                 await createUserWithEmailAndPassword(auth2, document.getElementById("email").value,
-                    'testtesttest').then(function (firebaseUser) {
+                    'testtest').then(function (firebaseUser) {
                         console.log("User " + firebaseUser + " created successfully!");
                     }
                     ).then(async data => {
                         await updateProfile(auth2.currentUser, { displayName: document.getElementById("name").value });
-                        await this.$fire.database.ref('anHospital/doctors/' + auth2.currentUser.uid).set({
+                        await this.$fire.database.ref(auth2.currentUser.displayName).set({
                             name: document.getElementById("name").value,
                             email: document.getElementById("email").value,
                             phone: document.getElementById("phone").value,
-                            id: document.getElementById("id").value,
+                            address: document.getElementById("addr").value,
                         });
 
                         auth2.signOut();
