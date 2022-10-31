@@ -1,5 +1,11 @@
 # medProd
 
+## Screen shots
+![image](https://user-images.githubusercontent.com/78999739/199042664-267db492-6354-42c5-877c-7d759ab62e2a.png)
+![image](https://user-images.githubusercontent.com/78999739/199042968-a83e67ca-ef91-455c-bb9d-400d4ce527f2.png)
+![image](https://user-images.githubusercontent.com/78999739/199043000-34a77abb-aff2-460e-a183-d79ae2b63620.png)
+
+
 ## Build Setup
 
 ```bash
